@@ -3,8 +3,12 @@
 #include <iostream>
 using namespace std;
 
-// Function to get the largest element from an array
+// Fungsi untuk mendapatkan elemen terbesar dari array
 int getMax(int array[], int n) {
+/*
+    I.S. Terdefinisi array integer dengan banyak elemen n
+    F.S. Fungsi akan mengembalikan elemen terbesar dari array
+*/
   int max = array[0];
   for (int i = 1; i < n; i++)
     if (array[i] > max)
@@ -12,8 +16,12 @@ int getMax(int array[], int n) {
   return max;
 }
 
-// Using counting sort to sort the elements in the basis of significant places
+// Menggunakan Counting Sort untuk mengurutkan elemen berdasarkan tempat penting
 void countingSort(int array[], int size, int place) {
+/*
+    I.S. Terdefinisi sebuah array bertipe integer dengan ukuran size dan place sebagai tempat
+    F.S. Array terurut secara ascending 
+*/
   const int max = 10;
   int output[size];
   int count[max];
@@ -21,15 +29,15 @@ void countingSort(int array[], int size, int place) {
   for (int i = 0; i < max; ++i)
     count[i] = 0;
 
-  // Calculate count of elements
+  // Menghitung jumlah elemen
   for (int i = 0; i < size; i++)
     count[(array[i] / place) % 10]++;
 
-  // Calculate cumulative count
+  // Menghitung jumlah kumulatif
   for (int i = 1; i < max; i++)
     count[i] += count[i - 1];
 
-  // Place the elements in sorted order
+  // Menempatkan elemen dalam urutan yang diurutkan
   for (int i = size - 1; i >= 0; i--) {
     output[count[(array[i] / place) % 10] - 1] = array[i];
     count[(array[i] / place) % 10]--;
@@ -39,25 +47,33 @@ void countingSort(int array[], int size, int place) {
     array[i] = output[i];
 }
 
-// Main function to implement radix sort
+// Procedure utama untuk mengimplentasikan radix sort
 void radixsort(int array[], int size) {
-  // Get maximum element
+/*
+    I.S. terdefinisi sebuah array integer dengan ukuran size
+    F.S. array integer berhasil terurut secara ascending
+*/
+  // Mendapatkan elemen maksimum
   int max = getMax(array, size);
 
-  // Apply counting sort to sort elements based on place value.
+  // Menerapkan pengurutan penghitungan untuk mengurutkan elemen berdasarkan nilai tempat.
   for (int place = 1; max / place > 0; place *= 10)
     countingSort(array, size, place);
 }
 
-// Print an array
+// Menampilkan array
 void printArray(int array[], int size) {
+/*
+    I.S. Terdefinisi sebuah array integer dengan ukuran size
+    F.S. Array telah tercetak pada piranti
+*/
   int i;
   for (i = 0; i < size; i++)
     cout << array[i] << " ";
   cout << endl;
 }
 
-// Driver code
+// Main Program
 int main() {
   int array[] = {121, 432, 564, 23, 1, 45, 788};
   int n = sizeof(array) / sizeof(array[0]);
