@@ -43,7 +43,7 @@ int partition(int array[], int bawah, int atas) {
   }
   
   // tukar pivot dengan elemen yang lebih besar di i
-  tukarNilai(&array[i + 1], &array[high]);
+  tukarNilai(&array[i + 1], &array[atas]);
   
   // kembalikan titik partisi
   return (i + 1);
