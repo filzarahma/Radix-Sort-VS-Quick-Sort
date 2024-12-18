@@ -95,7 +95,7 @@ The project tracks the execution time for both algorithms, highlighting their ef
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/username/sorting-algorithms.git
+    git clone https://github.com/filzarahma/Radix-Sort-VS-Quick-Sort.git
     cd sorting-algorithms
     ```
 
